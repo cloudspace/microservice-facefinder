@@ -1,0 +1,37 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
+    coderay (1.1.0)
+    columnize (0.8.9)
+    debugger-linecache (1.2.0)
+    ffi (1.9.6)
+    hooks (0.4.0)
+      uber (~> 0.0.4)
+    method_source (0.8.2)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
+    rbind (0.0.26)
+      ffi (>= 1.9.0)
+      hooks (>= 0.3.1)
+    ropencv (0.0.18)
+      ffi (~> 1.9.0)
+      rbind (>= 0.0.26)
+    slop (3.6.0)
+    uber (0.0.13)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  pry
+  pry-byebug
+  ropencv
