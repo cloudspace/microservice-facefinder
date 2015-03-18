@@ -1,7 +1,7 @@
 require 'ropencv'
 require 'net/http'
 require 'tempfile'
-require 'pry'
+require 'json'
 
 include OpenCV
 
@@ -35,13 +35,13 @@ cv::cvt_color(frame,frame_gray, cv::COLOR_BGR2GRAY)
 cv::equalizeHist( frame_gray, frame_gray );
 
 face_cascade.detect_multi_scale( frame_gray, faces, 1.1, 2, );
+puts JSON.generate(faces.map { |f| { x:f.x, y:f.y, width: f.width, height: f.height } })
 
-faces.each do |face|
-  puts "{ #{ face.x }, #{ face.y }, #{ face.width }, #{ face.height } }"
-  center = cv::Point.new(face.x + face.width*0.5, face.y + face.height*0.5)
+#faces.each do |face|
+#  { face.x , face.y , face.width , face.height  }
+#  center = cv::Point.new(face.x + face.width*0.5, face.y + face.height*0.5)
 
-  cv::ellipse( frame, center, cv::Size.new( face.width*0.5, face.height*0.5), 0, 0, 360, cv::Scalar.new( 255, 0, 255 ), 4, 8, 0 );
-end
-cv::imwrite("happy-people-found.jpg", frame)
+#  cv::ellipse( frame, center, cv::Size.new( face.width*0.5, face.height*0.5), 0, 0, 360, cv::Scalar.new( 255, 0, 255 ), 4, 8, 0 );
+#end
 #cv::imshow("key_points",frame)
 #cv::wait_key(-1)
