@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 
   config.vm.network "private_network", ip: "33.33.33.13"
+  config.vm.network "forwarded_port", guest: 5000, host: 5000
 
   config.vm.synced_folder ".", "/srv/#{org}", type: "nfs"
 
