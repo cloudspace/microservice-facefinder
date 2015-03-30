@@ -1,15 +1,15 @@
-name - facefinder
-description - Takes an input and returns a face URL.
-docker_image - fireboy1919/facefinder
+name - 'facefinder'
+description - 'Takes an input and returns a face URL.'
+docker_image - 'fireboy1919/facefinder'
 docker_image_tag - 0.5
-repo_url - https://github.com/cloudspace/microservice-facefinder.git
-docker_hub_url - https://registry.hub.docker.com/u/fireboy1919/facefinder
+repo_url - 'https://github.com/cloudspace/microservice-facefinder.git'
+docker_hub_url - 'https://registry.hub.docker.com/u/fireboy1919/facefinder'
 category - 'Image Manipulation'
-tags - 
-developer_name - 'rusty' 
-developer_type - User
+tags - []
+developer_name - 'Rusty' 
+developer_type - 'User'
 published - true
-command - bundle exec ruby /data/haar_cascade.rb
+command - 'bundle exec ruby /data/haar_cascade.rb [url]'
 inputs -
   url:
     param_type: 'Url'
