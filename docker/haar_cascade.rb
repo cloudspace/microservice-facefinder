@@ -16,4 +16,4 @@ file.close
 
 ff = FaceFinder.new
 
-ff.find_faces(ff.filename)
+puts ff.find_faces(file.path)

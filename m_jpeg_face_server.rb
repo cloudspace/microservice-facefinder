@@ -1,6 +1,5 @@
 require 'sinatra/base'
 require './lib/face_find'
-require 'pry'
 
 class MJpegFaceServer < Sinatra::Application
 
@@ -14,7 +13,7 @@ class MJpegFaceServer < Sinatra::Application
   @@output_dir = 'output_images/'
   @@source_dir = 'source_images/'
   @@boundary = "||mjpeg||"
-  @@distributed = false
+  @@distributed = true
   @@last_mtime = nil
   @@last_result = nil
 
@@ -64,7 +63,6 @@ class MJpegFaceServer < Sinatra::Application
     end
     false
   end
-
 
   def nondestributed_task
     fname = latest_file(@@source_dir) 

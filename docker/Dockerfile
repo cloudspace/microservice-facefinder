@@ -21,9 +21,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install opencv-data bundler cmake 
 
 # The ruby stuff.
 ADD ./Gemfile* /data/
-
+COPY ./lib/* /data/lib/
 RUN bundle install
 
 COPY ./haar_cascade.rb /data/
 
-CMD ["bundle","exec", "ruby", "/srv/app/haar_cascade.rb"]
+ADD ./microservice.yml /microservice.yml
+
+CMD ["bundle","exec", "ruby", "/data/haar_cascade.rb"]
+
