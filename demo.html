@@ -105,6 +105,7 @@ function GeecJobProcessor(url, job_description, finishcallback)
 
   self.Start  = function() {
     $.ajax({
+      type: 'POST',
       dataType: 'json',
       url: self.url,
       data: job_description,
@@ -114,7 +115,7 @@ function GeecJobProcessor(url, job_description, finishcallback)
   
   self.FinishedJobStart = function(result)
   {
-    self.Job = result.jobs[0]
+    self.Job = result.job
     $('#responseHolder').html(self.Job)
     $('#jobStatus').html(self.Job.status)
     setTimeout(self.GetJobState, 1000)
@@ -123,6 +124,7 @@ function GeecJobProcessor(url, job_description, finishcallback)
   self.GetJobState = function()
   {
     $.ajax({
+        type: 'GET',
         dataType: 'json',
         url: 'http://thegeec.com/api/jobs/'+self.Job.id,
         data:  {
@@ -166,17 +168,17 @@ function FaceAppProcessor(url)
   self.ShowFaces = function(result)
   {
     if(testMode) 
-      result = { Faces: [ { x:10, y:10, width:100, height: 100 }, {x: 300, y: 30, width: 100, height:100 } ] }
+      result = { faces: [ { x:10, y:10, width:100, height: 100 }, {x: 300, y: 30, width: 100, height:100 } ] }
     $('#responseHolder').html(JSON.stringify(result))
 
     startingLoc = $('#imageHolder img').offset()
     url = $('#imageHolder').src
-    for(i=0; i<result.Faces.length; i++)
+    for(i=0; i<result.faces.length; i++)
     {
-      $('#imageHolder').append("<div class='facebox' style='width:" + result.Faces[i].width+ 
-                                'px; height:'+result.Faces[i].height+
-                                'px; left:'+ (startingLoc.left+result.Faces[i].x)+
-                                'px; top:'+  (startingLoc.top+result.Faces[i].y ) +
+      $('#imageHolder').append("<div class='facebox' style='width:" + result.faces[i].width+ 
+                                'px; height:'+result.faces[i].height+
+                                'px; left:'+ (startingLoc.left+result.faces[i].x)+
+                                'px; top:'+  (startingLoc.top+result.faces[i].y ) +
                                 "px' ></div>")
                                 
     }
