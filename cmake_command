@@ -1,0 +1,1 @@
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_PYTHON_SUPPORT=OFF -D WITH_QT=OFF -D BUILD_SHARED_LIBRARIES=OFF -DOPENCV_MODULES_DISABLED_USER="flann calib3d ml video legacy photo gpu ocl nonfree contrib stitching superres ts videostab" -D BUILD_opencv_video=OFF -D BUILD_opencv_flann=off -D BUILD_opencv_ml=off .

@@ -1,0 +1,25 @@
+microservice:
+  name: 'facefinder'
+  spec_verison: 1.0
+  description: 'Takes an input and returns a face URL.'
+  docker_image: 'fireboy1919/facefinder'
+  docker_image_tag: 0.12
+  repo_url: 'https://github.com/cloudspace/microservice-facefinder.git'
+  docker_hub_url: 'https://registry.hub.docker.com/u/fireboy1919/facefinder'
+  category: 'Image Manipulation'
+  tags: []
+  developer_name: 'Rusty' 
+  developer_type: 'User'
+  published: true
+  command: '/detectFaces.sh [url]'
+  inputs:
+    url:
+      param_type: 'Url'
+      regex: '^https?:\/\/[\S]+$'
+      required: true
+      secure: false
+      description: 'URL to the image to be uploaded.'
+  outputs:
+    faces:
+      param_type: 'Array'
+      description: 'The location of the images that were found.'

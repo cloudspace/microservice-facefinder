@@ -88,6 +88,7 @@ $("#showImage").click(function()
     {
     // Show image, turn on progress spinner, send request to get image coordinates.
     $('#imageHolder').html("<img src='"+$('#url').val()+"' />")
+    $(".facebox").remove()
     $(this).toggleClass('active')
      jp = new FaceAppProcessor($('#url').val() )
     }
@@ -141,7 +142,7 @@ function GeecJobProcessor(url, job_description, finishcallback)
     $('#jobStatus').html( result.status )
     if(result.completed || testMode )
     {
-      $('#jobStatus').toggleClass('active')
+      $('#showImage').toggleClass('active')
       self.Finish(result.results)
     }
     else
@@ -170,13 +171,14 @@ function FaceAppProcessor(url)
   {
     if(testMode) 
       result = { faces: [ { x:10, y:10, width:100, height: 100 }, {x: 300, y: 30, width: 100, height:100 } ] }
+
     $('#responseHolder').html(JSON.stringify(result))
 
     startingLoc = $('#imageHolder img').offset()
     url = $('#imageHolder').src
     for(i=0; i<result.faces.length; i++)
     {
-      $('#imageHolder').append("<div class='facebox' style='width:" + result.faces[i].width+ 
+      $('body').append("<div class='facebox' style='width:" + result.faces[i].width+ 
                                 'px; height:'+result.faces[i].height+
                                 'px; left:'+ (startingLoc.left+result.faces[i].x)+
                                 'px; top:'+  (startingLoc.top+result.faces[i].y ) +
